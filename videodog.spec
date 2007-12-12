@@ -1,6 +1,6 @@
 %define name	videodog
 %define version	0.31
-%define release 1mdk
+%define release %mkrel 1
 
 Name: 	 	%{name}
 Summary: 	Video4Linux frame grabber
@@ -46,6 +46,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc ALPHABLEND CONFIG_FILE EFFECTS MOTION README CHANGELOG EFFECTS LICENSE TODO USAGE *.pdf
 %{_bindir}/%name
-%{_mandir}/man1/%name.1.bz2
+%{_mandir}/man1/%name.1*
 %config(noreplace) %_sysconfdir/vd.conf
 
