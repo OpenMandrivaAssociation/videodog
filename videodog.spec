@@ -11,6 +11,7 @@ Source:		%{name}-%{version}.tar.bz2
 URL:		http://planeta.terra.com.br/informatica/gleicon/video4linux/videodog.html
 License:	GPL
 Group:		Video
+BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	jpeg-devel
 
 %description
