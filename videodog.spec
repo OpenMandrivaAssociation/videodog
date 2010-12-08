@@ -1,6 +1,6 @@
 %define name	videodog
 %define version	0.31
-%define release %mkrel 5
+%define release %mkrel 6
 
 Name: 	 	%{name}
 Summary: 	Video4Linux frame grabber
