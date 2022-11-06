@@ -1,17 +1,12 @@
-%define name	videodog
-%define version	0.31
-%define release %mkrel 6
-
-Name: 	 	%{name}
+Name: 	 	videodog
 Summary: 	Video4Linux frame grabber
-Version: 	%{version}
-Release: 	%{release}
-
-Source:		%{name}-%{version}.tar.bz2
-URL:		http://planeta.terra.com.br/informatica/gleicon/video4linux/videodog.html
+Version: 	0.31
+Release: 	7
+# Upstream is dead, we need to use the
+# copy from file-store.
+Source:		videodog%{version}.tar.gz
 License:	GPL
 Group:		Video
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	jpeg-devel
 
 %description
@@ -25,10 +20,9 @@ external libraries are required.
 %prep
 %setup -q
 mv %name.man %name.1
-bzip2 %name.1
 
 %build
-%make CC="gcc $RPM_OPT_FLAGS"
+%make CC="%{__cc} $RPM_OPT_FLAGS"
 										
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -37,10 +31,7 @@ mkdir -p $RPM_BUILD_ROOT/%_mandir/man1
 %makeinstall
 rm -fr %buildroot/usr/doc
 cp vd.conf $RPM_BUILD_ROOT/%_sysconfdir
-cp %name.1.bz2 $RPM_BUILD_ROOT/%_mandir/man1
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+cp %name.1 $RPM_BUILD_ROOT/%_mandir/man1
 
 %files
 %defattr(-,root,root)
@@ -48,4 +39,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/%name
 %{_mandir}/man1/%name.1*
 %config(noreplace) %_sysconfdir/vd.conf
-
